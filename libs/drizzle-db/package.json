@@ -1,0 +1,39 @@
+{
+  "name": "@time-flow/drizzle-db",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "options": {
+          "outputPath": "dist/libs/drizzle-db",
+          "tsConfig": "libs/drizzle-db/tsconfig.lib.json",
+          "packageJson": "libs/drizzle-db/package.json",
+          "main": "libs/drizzle-db/src/index.ts",
+          "assets": [
+            "libs/drizzle-db/*.md"
+          ]
+        }
+      }
+    }
+  }
+}
