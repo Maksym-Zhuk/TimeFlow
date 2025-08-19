@@ -23,6 +23,12 @@
     },
     {
       "path": "./libs/shared-backend"
+    },
+    {
+      "path": "./apps/auth-e2e"
+    },
+    {
+      "path": "./apps/auth"
     }
   ]
 }
