@@ -20,6 +20,9 @@
     },
     {
       "path": "./libs/graphql"
+    },
+    {
+      "path": "./libs/shared-backend"
     }
   ]
 }
