@@ -17,6 +17,9 @@
     },
     {
       "path": "./libs/drizzle-db"
+    },
+    {
+      "path": "./libs/graphql"
     }
   ]
 }

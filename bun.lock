@@ -115,6 +115,13 @@
         "tslib": "^2.3.0",
       },
     },
+    "libs/graphql": {
+      "name": "@time-flow/graphql",
+      "version": "0.0.1",
+      "dependencies": {
+        "tslib": "^2.3.0",
+      },
+    },
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -1130,6 +1137,8 @@
     "@time-flow/api-gateway-e2e": ["@time-flow/api-gateway-e2e@workspace:apps/api-gateway-e2e"],
 
     "@time-flow/drizzle-db": ["@time-flow/drizzle-db@workspace:libs/drizzle-db"],
+
+    "@time-flow/graphql": ["@time-flow/graphql@workspace:libs/graphql"],
 
     "@time-flow/web": ["@time-flow/web@workspace:apps/web"],
 
