@@ -1,1 +1,1 @@
-export * from './lib/shared-backend.module';
+export * from './config/index';
