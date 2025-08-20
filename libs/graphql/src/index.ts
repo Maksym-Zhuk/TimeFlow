@@ -1,1 +1,1 @@
-export * from './lib/graphql.module';
+export * from './models/index';
