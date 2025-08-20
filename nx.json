@@ -70,8 +70,7 @@
         "watchDepsTargetName": "watch-deps",
         "serveStaticTargetName": "serve-static"
       }
-    },
-    "@monodon/rust"
+    }
   ],
   "targetDefaults": {
     "test": {
