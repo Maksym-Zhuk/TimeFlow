@@ -1,4 +1,7 @@
 {
+  "dependencies": {
+    "@nestjs/mapped-types": "*"
+  },
   "name": "@time-flow/auth",
   "version": "0.0.1",
   "private": true,
@@ -81,6 +84,5 @@
         }
       }
     }
-  },
-  "dependencies": {}
+  }
 }
