@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 import { LoginInput, RegisterInput } from '@time-flow/shared-backend';
+import { UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,9 @@ export class AuthService {
     );
 
     if (!accessToken && !refreshToken) {
-      throw new Error('No data received from auth microservice!');
+      throw new UnauthorizedException(
+        'No data received from auth microservice!'
+      );
     }
 
     return { accessToken, refreshToken };
@@ -27,7 +30,9 @@ export class AuthService {
     );
 
     if (!accessToken && !refreshToken) {
-      throw new Error('No data received from auth microservice!');
+      throw new UnauthorizedException(
+        'No data received from auth microservice!'
+      );
     }
 
     return { accessToken, refreshToken };
@@ -39,7 +44,9 @@ export class AuthService {
     );
 
     if (!currentUser) {
-      throw new Error('No data received from auth microservice!');
+      throw new UnauthorizedException(
+        'No data received from auth microservice!'
+      );
     }
 
     return currentUser;
@@ -51,7 +58,9 @@ export class AuthService {
     );
 
     if (!accessToken) {
-      throw new Error('No data received from auth microservice!');
+      throw new UnauthorizedException(
+        'No data received from auth microservice!'
+      );
     }
 
     return { accessToken };
