@@ -78,7 +78,7 @@ export class AppService {
     return { accessToken, refreshToken };
   }
 
-  async createProfile(userId: string, input: CreateProfileInput) {
+  private async createProfile(userId: string, input: CreateProfileInput) {
     const { firstName, lastName } = input;
     const profile = await this.db
       .insert(profileInfo)
@@ -104,7 +104,7 @@ export class AppService {
     if (!checkPassword) throw new UnauthorizedException('Incorrect password!');
     const { accessToken, refreshToken } = await this.generateTokens(user.id);
     if (!accessToken && !refreshToken)
-      throw new UnauthorizedException('Tokens not created');
+      throw new UnauthorizedException('Tokens not created!');
     return { accessToken, refreshToken };
   }
 
@@ -116,6 +116,7 @@ export class AppService {
     const accessToken = await this.jwtService.signAsync({ sub: userId });
     return { accessToken };
   }
+
   async validateJwtUser(userId: string) {
     const user = await this.db.query.users.findFirst({
       where: (users) => eq(users.id, userId),

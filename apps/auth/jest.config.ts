@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { readFileSync } from 'fs';
 
-// Reading the SWC compilation config for the spec files
+// Reading the SWC compilation config for the spec files.
+// This relies on __dirname being available in the execution environment (standard for CommonJS).
 const swcJestConfig = JSON.parse(
   readFileSync(`${__dirname}/.spec.swcrc`, 'utf-8')
 );
