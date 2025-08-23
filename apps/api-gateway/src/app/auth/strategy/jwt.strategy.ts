@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service';
 import { cookieExtractor } from '../extractors/cookieExtractor';
 
 export interface AuthJwtPayload {
-  sub: number;
+  sub: string;
 }
 
 @Injectable()

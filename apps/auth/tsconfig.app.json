@@ -7,7 +7,7 @@
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "target": "es2021"
+    "target": "es2021",
   },
   "include": ["src/**/*.ts"],
   "exclude": [
@@ -19,5 +19,13 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/drizzle-db/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/shared-backend/tsconfig.lib.json"
+    }
   ]
 }

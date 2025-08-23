@@ -1,32 +1,27 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { FastifyRequest, FastifyReply } from 'fastify';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
+    GraphQLModule.forRoot<MercuriusDriverConfig>({
+      driver: MercuriusDriver,
       autoSchemaFile: true,
-      sortSchema: true,
-      playground: true,
       introspection: true,
+      graphiql: true,
       debug: true,
-      context: ({
-        req,
-        reply,
-      }: {
-        req: FastifyRequest;
-        reply: FastifyReply;
-      }) => ({
-        req,
+      context: (request: FastifyRequest, reply: FastifyReply) => ({
+        req: request,
         reply,
       }),
     }),
+    AuthModule,
   ],
   controllers: [],
   providers: [],

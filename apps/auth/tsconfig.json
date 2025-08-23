@@ -4,6 +4,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/drizzle-db"
+    },
+    {
+      "path": "../../libs/shared-backend"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {

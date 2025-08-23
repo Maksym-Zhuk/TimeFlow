@@ -9,7 +9,7 @@ import { refreshJwtConfig } from '@time-flow/shared-backend';
 import { cookieExtractor } from '../extractors/cookieExtractor.js';
 
 export interface AuthJwtPayload {
-  sub: number;
+  sub: string;
 }
 
 @Injectable()
