@@ -1,4 +1,9 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import type { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import {
@@ -51,6 +56,14 @@ export class AppService {
   }
 
   async register(input: RegisterInput) {
+    const existingUser = await this.db.query.users.findFirst({
+      where: (users) => eq(users.email, input.email),
+    });
+
+    if (existingUser) {
+      throw new ConflictException('User with this email already exists');
+    }
+
     const hashedPassword: string = await bcrypt.hash(input.password, 10);
     const user = await this.db
       .insert(users)
@@ -108,15 +121,6 @@ export class AppService {
     return { accessToken, refreshToken };
   }
 
-  async validateRefreshToken(userId: string) {
-    const user = await this.db.query.users.findFirst({
-      where: (users) => eq(users.id, userId),
-    });
-    if (!user) throw new UnauthorizedException('User not found!');
-    const accessToken = await this.jwtService.signAsync({ sub: userId });
-    return { accessToken };
-  }
-
   async validateJwtUser(userId: string) {
     const user = await this.db.query.users.findFirst({
       where: (users) => eq(users.id, userId),
@@ -124,5 +128,14 @@ export class AppService {
     if (!user) throw new UnauthorizedException('User not found!');
     const currentUser: CurrentUser = { id: user.id, role: user.role };
     return currentUser;
+  }
+
+  async validateRefreshToken(userId: string) {
+    const user = await this.db.query.users.findFirst({
+      where: (users) => eq(users.id, userId),
+    });
+    if (!user) throw new UnauthorizedException('User not found!');
+    const accessToken = await this.jwtService.signAsync({ sub: userId });
+    return { accessToken };
   }
 }
