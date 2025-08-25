@@ -10,5 +10,9 @@
       "password": "password",
       "name": "test"
     }
-  ]
+  ],
+  "rust-analyzer.checkOnSave": false,
+  "rust-analyzer.linkedProjects": [
+        "./apps/timeflow_cli/Cargo.toml"
+    ]
 }

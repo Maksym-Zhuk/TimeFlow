@@ -29,6 +29,12 @@
     },
     {
       "path": "./apps/auth"
+    },
+    {
+      "path": "./apps/user-e2e"
+    },
+    {
+      "path": "./apps/user"
     }
   ]
 }

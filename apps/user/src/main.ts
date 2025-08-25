@@ -12,7 +12,7 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter()
   );
-  const port = process.env.PORT_AUTH as string;
+  const port = process.env.PORT_USER as string;
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}`);
 
@@ -21,7 +21,7 @@ async function bootstrap() {
       transport: Transport.RMQ,
       options: {
         urls: [process.env.RABBITMQ_URL as string],
-        queue: 'auth_queue',
+        queue: 'user_queue',
         queueOptions: {
           durable: true,
         },
@@ -29,7 +29,7 @@ async function bootstrap() {
     });
 
   await microservice.listen();
-  Logger.log(`🚀Auth microservice is listening`);
+  Logger.log(`🚀User microservice is listening`);
 }
 
 bootstrap();

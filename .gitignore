@@ -50,3 +50,5 @@ out
 test-output
 
 .env*
+
+/apps/timeflow_cli/target
